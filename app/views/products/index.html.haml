@@ -1,6 +1,9 @@
-%p All the products
+%h3{class: "text-center"} All The Products
+%p="(Red box is for debugging.)"
 
-- @products.each do |each_product|
-  %ul
-    %li=each_product.title
-    %li=each_product.price
+%div{class: "text-center"}
+  - @products.each do |each_product|
+    %div{class: "debugging float-left small-margin small-padding product-display-box"}
+      (insert picture here)
+      %p=each_product.title
+      %p="$#{each_product.price}"
