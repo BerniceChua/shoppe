@@ -1,1 +1,6 @@
-%p Test Hello
+%p All the products
+
+- @products.each do |each_product|
+  %ul
+    %li=each_product.title
+    %li=each_product.price
