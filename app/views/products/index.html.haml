@@ -5,5 +5,5 @@
   - @products.each do |each_product|
     %div{class: "debugging float-left small-margin small-padding product-display-box"}
       (insert picture here)
-      %p=each_product.title
+      %p=link_to each_product.title, product_path(each_product)
       %p="$#{each_product.price}"
