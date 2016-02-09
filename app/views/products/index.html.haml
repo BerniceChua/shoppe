@@ -1,6 +1,8 @@
 %p All the products
 
-- @products.each do |each_product|
-  %ul
-    %li=each_product.title
-    %li=each_product.price
+%ul
+  - @products.each do |each_product|
+    %li
+      %div
+        %p=each_product.title
+        %p=each_product.price
