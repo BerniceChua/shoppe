@@ -28,8 +28,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.update(product_params)
-      p product_params
-      p params
       redirect_to @product
     else
       render 'edit'
