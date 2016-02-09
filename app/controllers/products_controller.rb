@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
+      flash[:success] = "#{@product.title} saved! ^_^"
       redirect_to @product
     else
       @errors = @product.errors

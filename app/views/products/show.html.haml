@@ -1,5 +1,8 @@
 %h3{class: "text-center"}= "#{@product.title}"
 
+- flash.each do |message_type, message|
+  %div{class: "success"}= message
+
 %ul
   %li="Price: $#{@product.price}"
   %li="Description: #{@product.description}"
