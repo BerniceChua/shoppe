@@ -1,8 +1,9 @@
-%h3{class: "text-center"}= "Product #{@product.title}"
+%h3{class: "text-center"}= "#{@product.title}"
 
 %ul
   %li="Price: $#{@product.price}"
   %li="Description: #{@product.description}"
   %li="Inventory: #{@product.inventory}"
 
-%p=link_to "Edit this Product", edit_product_path(@product)
+%p=link_to "Edit or Delete this Product", edit_product_path(@product)
+
