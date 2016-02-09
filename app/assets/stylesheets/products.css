@@ -1,4 +1,24 @@
+@import url(https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister);
+
 /*
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+.debugging { border: 1px solid red; }
+
+.float-left { float: left; }
+
+.small-margin { margin: 1em;}
+
+.small-padding { padding: 1em;}
+
+.header-font {
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 5em;
+}
+
+.product-display-box {
+  height: 8em;
+  width: 8em;
+}
