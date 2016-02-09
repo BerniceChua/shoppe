@@ -1,0 +1,19 @@
+%h1 Edit #{@product.title}
+
+=form_for :product, url:product_path(@product), method: :patch do |f|
+
+  %p= f.label :title
+  %p= f.text_field :title
+
+  %p= f.label :price
+  %p= f.number_field :price
+
+  %p= f.label :description
+  %p= f.text_area :description
+
+  %p= f.label :inventory
+  %p= f.number_field :inventory
+
+  %p= f.submit
+
+%p=link_to "Cancel Edit", product_path(@product)
