@@ -18,8 +18,10 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
+      flash[:success] = "#{@product.title} saved! ^_^"
       redirect_to @product
     else
+      @errors = @product.errors
       render 'new'
     end
   end
@@ -30,6 +32,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to @product
     else
+      @errors = @product.errors
       render 'edit'
     end
   end

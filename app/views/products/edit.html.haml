@@ -1,5 +1,11 @@
 %h1 Edit #{@product.title}
 
+-if @errors
+  = pluralize(@errors.count, "error")
+  prohibited this product from being saved:
+  -@product.errors.full_messages.each do |msg|
+    %p=msg
+
 =form_for :product, url:product_path(@product), method: :patch do |f|
 
   %p= f.label :title
