@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to @product
     else
+      @errors = @product.errors
       render 'new'
     end
   end
@@ -30,6 +31,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to @product
     else
+      @errors = @product.errors
       render 'edit'
     end
   end
