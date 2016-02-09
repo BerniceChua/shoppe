@@ -17,3 +17,5 @@
   %p= f.submit
 
 %p=link_to "Cancel Edit", product_path(@product)
+
+%p=link_to "Delete this Product", product_path(@product), method: :delete, data: { confirm: "Confirm Delete?" }
