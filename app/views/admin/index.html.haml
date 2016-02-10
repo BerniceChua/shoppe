@@ -3,7 +3,10 @@
 
 %div{class: "text-center"}
   - @products.each do |each_product|
-    %div{class: "debugging float-left small-margin small-padding product-display-box"}
+    %div{class: "debugging small-margin small-padding"}
       (insert picture here)
       %p=link_to each_product.title, product_path(each_product)
       %p="$#{each_product.price}"
+      %p=link_to "Edit or Delete this Product", edit_product_path(each_product)
+
+%p=link_to "Create New Product", new_product_path
