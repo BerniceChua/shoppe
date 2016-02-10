@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20160208235944) do
     t.string   "title"
     t.integer  "price"
     t.string   "description"
-    t.integer  "inventory"
+    t.integer  "inventory",   default: 1
     t.string   "picture"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
 end
