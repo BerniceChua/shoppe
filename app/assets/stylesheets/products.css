@@ -23,4 +23,7 @@
   width: 8em;
 }
 
-.success { color: green; }
+.success {
+  color: green;
+  font-weight: bolder;
+}
