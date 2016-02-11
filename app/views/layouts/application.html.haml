@@ -14,5 +14,13 @@
   %body
     %header{class: "container"}
       %h1{class: "text-center header-font"} BUY OUR PRODUCTS!!!
+      - if logged_in?
+        %a{href:"/sessions/logout"}
+          ='logout'
+      - else
+        %a{href:"/sessions/new"}
+          ='login'
+        %a{href:"/users/new"}
+          ='register'
     %section{class: "container-fluid"}
       = yield

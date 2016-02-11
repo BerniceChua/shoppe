@@ -6,6 +6,7 @@ gem 'pg', '~> 0.15'
 
 gem 'jquery-rails'
 gem 'haml-rails'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'byebug'
