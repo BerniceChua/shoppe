@@ -20,6 +20,9 @@
   %p= f.label :inventory
   %p= f.number_field :inventory
 
+  %p= f.label :'image url'
+  %p= f.text_field :picture
+
   %p= f.submit
 
 %p=link_to "Cancel New", products_path
