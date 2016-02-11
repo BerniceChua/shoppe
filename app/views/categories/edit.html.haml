@@ -1,0 +1,18 @@
+%h1 Edit #{@category.title}
+
+-if @errors
+  = pluralize(@errors.count, "error")
+  prohibited this category from being saved:
+  -@category.errors.full_messages.each do |msg|
+    %p=msg
+
+=form_for :category, url:category_path(@category), method: :patch do |f|
+
+  %p= f.label :name
+  %p= f.text_field :name
+
+  %p= f.submit
+
+%p=link_to "Cancel Edit", category_path(@category)
+
+%p=link_to "Delete this category", category_path(@category), method: :delete, data: { confirm: "Confirm Delete?" }
