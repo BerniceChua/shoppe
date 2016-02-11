@@ -1,4 +1,4 @@
-%h1 New Product
+%h1 New Category
 
 -if @errors
   = pluralize(@errors.count, "error")
@@ -11,6 +11,6 @@
   %p= f.label :name
   %p= f.text_field :name
 
-  %p= f.submit "Register"
+  %p= f.submit
 
 %p=link_to "Cancel Registration", categories_path
