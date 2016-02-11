@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  has_and_belongs_to_many :categories
+
   before_save :default_inventory_is_one
 
   validates :title, :description, :price, presence: true
