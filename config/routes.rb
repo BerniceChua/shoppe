@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   get 'products/index'
 
-  resources :products, :users
+  resources :users, :products, :categories
 
-  root "products#index"
+  root "categories#index"
 
   get 'admin/index'
 
