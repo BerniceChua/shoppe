@@ -5,11 +5,18 @@ class Product < ActiveRecord::Base
 
   validates :title, :description, :price, presence: true
   validates :price, :inventory, numericality: {greater_than_or_equal_to: 0}
+  # validate :must_have_at_least_one_category
 
   def default_inventory_is_one
     if self.inventory.nil?
       self.inventory = 1
     end
   end
+
+  # def must_have_at_least_one_category
+  # 	if self.categories.length < 1
+  # 		errors.add(:product, "must have at least one category")
+  # 	end
+  # end
 
 end

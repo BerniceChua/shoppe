@@ -21,7 +21,11 @@
   %p= f.number_field :inventory
 
   %p= f.label :'image url'
-  %p= f.text_field :picture
+  %p= f.url_field :picture
+
+  %p= f.label :'Categories'
+  %p= f.collection_check_boxes(:category_ids, Category.all, :id, :name)
+
 
   %p= f.submit
 

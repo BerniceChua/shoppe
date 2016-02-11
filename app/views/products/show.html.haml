@@ -3,6 +3,8 @@
 - flash.each do |message_type, message|
   %div{class: "alert alert-#{message_type}"}= message
 
+%img{'src'=> "#{@product.picture}"}
+
 %ul
   %li="Price: $#{@product.price}"
   %li="Description: #{@product.description}"
