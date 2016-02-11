@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   root "categories#index"
 
-  get 'admin/index'
+  get 'admin/index', to: 'admin#index'
 
   get 'users/new', to: 'users#new'
 
