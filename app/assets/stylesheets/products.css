@@ -27,3 +27,7 @@
   color: green;
   font-weight: bolder;
 }
+
+.checkbox_container input {
+  display: block;
+}

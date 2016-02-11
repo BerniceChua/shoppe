@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @categories = Category.all
   end
 
   def edit
@@ -18,8 +19,18 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-
     if @product.save
+      if params[:product][:category_ids].length == 1
+         @defaultCategory = Category.find_by(name: 'default')
+         @defaultCategory.products  << @product
+          flash[:success] = "#{@product.title} did not get a assigned category, and was given the default category ^_^"
+      else
+        params[:product][:category_ids].pop
+        params[:product][:category_ids].each do |category_id|
+          Category.find(category_id).products << @product
+        end
+      end
+
       flash[:success] = "#{@product.title} saved! ^_^"
       redirect_to @product
     else
@@ -48,6 +59,6 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:title, :description, :price, :inventory, :picture)
+    params.require(:product).permit(:title, :description, :price, :inventory, :picture, :category_ids)
   end
 end
