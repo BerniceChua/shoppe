@@ -41,12 +41,12 @@ class CategoriesController < ApplicationController
 	    @category = Category.find(params[:id])
 	    @category.destroy
 
-	    redirect_to products_path
+	    redirect_to categories_path
 	  end
 
 	  private
 	  def category_params
-	    params.require(:product).permit(:title, :description, :price, :inventory)
+	    params.require(:category).permit(:name)
 	  end
 
 end
