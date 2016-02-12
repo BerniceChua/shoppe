@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
 	    @category = Category.new(category_params)
 
 	      if @category.save
-	            flash[:success] = "#{@category.title} saved! ^_^"
+	            flash[:success] = "#{@category.name} saved! ^_^"
 	            redirect_to @category
 	      else
 	            @errors = @category.errors

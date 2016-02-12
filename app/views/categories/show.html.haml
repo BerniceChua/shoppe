@@ -1,5 +1,8 @@
 %h3.text-center= "#{@category.name}"
 
+-if is_admin?
+  =link_to "Edit or Delete", edit_category_path(@category)
+
 - flash.each do |message_type, message|
   %div{class: "alert alert-#{message_type}"}= message
 

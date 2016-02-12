@@ -16,7 +16,7 @@
       %h1{class: "text-center header-font"} BeNice Horse Breeders
       %a{href:"/"} Homepage
       .dropdown
-        %button.dropbtn Dropdown
+        %button.dropbtn Categories
         .dropdown-content
           -@categories.each do |category|
             %a{:href => "/categories/#{category.id}"}
@@ -26,7 +26,10 @@
           =link_to("Admin Page", { controller: "admin", action: "index" })
         %a{href:"/sessions/logout"}
           ='logout'
-        %p="Welcome #{current_user.username}"
+        %p
+          Welcome
+          %a{href:"/users/#{current_user.id}"}
+            =current_user.username
       - else
         %a{href:"/sessions/new"}
           ='login'
