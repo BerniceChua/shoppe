@@ -7,6 +7,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :permissions, default: "buyer"
 
       t.timestamps null: false
+
     end
+     add_index :users, :email
   end
 end
