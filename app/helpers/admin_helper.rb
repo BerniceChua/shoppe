@@ -6,7 +6,15 @@ module AdminHelper
     # end
 
     def is_admin?
-    	@user.permissions == 'admin'
+    	session[:id] == 1
+    end
+
+    def render_to_authorized
+    	if is_admin?
+    		@products = Product.all
+    	else
+    		render '/admin/unauthorized'
+    	end
     end
 
 end

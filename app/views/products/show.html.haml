@@ -9,3 +9,7 @@
   %li="Price: $#{@product.price}"
   %li="Description: #{@product.description}"
   %li="Inventory: #{@product.inventory}"
+  %li="Categories:"
+  %ul
+    -@product.categories.each do |category|
+      %li= category.name

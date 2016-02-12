@@ -6,6 +6,7 @@
   %tr{}
     %th Photo
     %th Name
+    %th Categories
     %th Price
     %th Count
     %th Actions
@@ -13,6 +14,7 @@
     %tr{class: "small-margin small-padding"}
       %td="(insert picture here)"
       %td=link_to each_product.title, product_path(each_product)
+      %td=each_product.categories_list
       %td="$#{each_product.price}"
       %td=each_product.inventory
       %td=link_to "Edit or Delete", edit_product_path(each_product)

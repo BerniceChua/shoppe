@@ -19,10 +19,13 @@ class SessionsController < ApplicationController
 	  @user = User.authenticate(params[:login])
 
 	  if @user
-	    session[:id] = @user.id
-	    redirect_to "/users/#{@user.id}"
+	  	session[:id] = @user.id
+	  	if session[:id] == 1
+	  		redirect_to "/admin/index"
+	  	else
+	    		redirect_to "/users/#{@user.id}"
+	  	end
 	  else
-	  	puts "THIS WAS NOT RIGHT AT ALL!!!!!!!!!!!"
 	    @errors = "Username and/or Password INCORRECT"
 	    render :"/sessions/new"
 	  end

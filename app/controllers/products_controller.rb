@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  http_basic_authenticate_with name:"admin", password:"secret", except: [:index, :show]
+  before_filter :render_to_authorized, except: [:index, :show]
 
   def index
     @products = Product.all
@@ -15,6 +15,10 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+
+    # if is_admin?
+    #   render_to
+    # end
   end
 
   def create
@@ -43,7 +47,18 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.update(product_params)
-      redirect_to @product
+      @product.categories = []
+      if params[:product][:category_ids].length == 1
+         @defaultCategory = Category.find_by(name: 'default')
+         @defaultCategory.products  << @product
+          flash[:success] = "#{@product.title} did not get a assigned category, and was given the default category ^_^"
+      else
+        params[:product][:category_ids].pop
+        params[:product][:category_ids].each do |category_id|
+          Category.find(category_id).products << @product
+        end
+      redirect_to '/admin/index'
+      end
     else
       @errors = @product.errors
       render 'edit'
@@ -54,7 +69,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.destroy
 
-    redirect_to products_path
+    redirect_to "/admin/index"
   end
 
   private

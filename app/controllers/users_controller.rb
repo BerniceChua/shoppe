@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+include UsersHelper
+
 	def show
 		@user = User.find(params[:id])
 	end
@@ -8,9 +10,9 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		puts params
 		@user = User.new(user_params)
 		if @user.save
+			login(@user)
 			flash[:success] = "#{@user.username} saved! ^_^"
 			redirect_to "/users/#{@user.id}"
 		else
@@ -20,7 +22,12 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])
+		user_being_viewed = User.find(params[:id])
+		if current_user == user_being_viewed
+			@user = user_being_viewed
+		else
+			redirect_to "/sessions/new"
+		end
 	end
 
 	def update
