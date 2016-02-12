@@ -19,4 +19,12 @@ class Product < ActiveRecord::Base
   # 	end
   # end
 
+  def categories_list
+    array_of_categories = []
+    self.categories.each do |category|
+      array_of_categories << "#{category.name}"
+    end
+    return array_of_categories.join(", ")
+  end
+
 end

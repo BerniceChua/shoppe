@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+	before_filter :render_to_authorized, except: [:index, :show]
 	def index
 		@categories = Category.all
 	end

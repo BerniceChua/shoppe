@@ -26,7 +26,7 @@
           =link_to("Admin Page", { controller: "admin", action: "index" })
         %a{href:"/sessions/logout"}
           ='logout'
-        %p="Welcome #{current_user.username}"
+
       - else
         %a{href:"/sessions/new"}
           ='login'

@@ -18,6 +18,10 @@
   font-size: 5em;
 }
 
+.header-font:a {
+	color: black;
+}
+
 .product-display-box {
   height: 8em;
   width: 8em;

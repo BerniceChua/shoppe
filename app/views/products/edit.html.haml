@@ -20,8 +20,14 @@
   %p= f.label :inventory
   %p= f.number_field :inventory
 
+  %p= f.label :'image url'
+  %p= f.url_field :picture
+
+  %p= f.label :'Categories'
+  %p= f.collection_check_boxes(:category_ids, Category.all, :id, :name)
+
   %p= f.submit
 
-%p=link_to "Cancel Edit", product_path(@product)
+%p=link_to "Cancel Edit", '/admin/index'
 
 %p=link_to "Delete this Product", product_path(@product), method: :delete, data: { confirm: "Confirm Delete?" }
