@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212224543) do
+ActiveRecord::Schema.define(version: 20160212192831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 20160212224543) do
   end
 
   create_table "carts_products", id: false, force: :cascade do |t|
-    t.integer  "cart_id"
-    t.integer  "product_id"
-    t.integer  "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "cart_id",                null: false
+    t.integer  "product_id",             null: false
+    t.integer  "quantity",   default: 1, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "carts_products", ["cart_id", "product_id"], name: "index_carts_products_on_cart_id_and_product_id", using: :btree
@@ -46,9 +46,6 @@ ActiveRecord::Schema.define(version: 20160212224543) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "categories_products", ["category_id", "product_id"], name: "index_categories_products_on_category_id_and_product_id", using: :btree
-  add_index "categories_products", ["product_id", "category_id"], name: "index_categories_products_on_product_id_and_category_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
@@ -68,7 +65,5 @@ ActiveRecord::Schema.define(version: 20160212224543) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
 end
