@@ -13,3 +13,6 @@
   %ul
     -@product.categories.each do |category|
       %li= category.name
+
+-if is_admin?
+  =link_to "Edit or Delete", edit_product_path(@product)
