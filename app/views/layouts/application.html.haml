@@ -30,6 +30,8 @@
           Welcome
           %a{href:"/users/#{current_user.id}"}
             =current_user.username
+        %a{href:"/carts/#{current_user.carts.last.id}"}
+          ='Go To Cart'
       - else
         %a{href:"/sessions/new"}
           ='login'

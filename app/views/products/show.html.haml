@@ -14,5 +14,7 @@
     -@product.categories.each do |category|
       %li= category.name
 
+%input{:type => "submit", :value => "add to cart"}
+
 -if is_admin?
   =link_to "Edit or Delete", edit_product_path(@product)

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'products/index'
 
-  resources :users, :products, :categories
+  resources :users, :products, :categories, :carts
 
   root "categories#index"
 

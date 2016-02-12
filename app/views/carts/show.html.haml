@@ -1,0 +1,19 @@
+= @user.username
+
+%table{class: "table table-hover"}
+  %tr{}
+    %th Product
+    %th Price
+    %th Quantity
+    %th Edit Quantity
+    %th Remove Item
+  - @cart.products.each do |prod|
+    %tr{class: "small-margin small-padding"}
+      %td= prod.title
+      %td= prod.price
+      %td "quantity"
+      %td "Edit Button"
+      %td "Delete Button"
+
+%input{:type => "submit", :value => "Purchase", class: "btn"}
+%div#price-div total price:
