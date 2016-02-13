@@ -6,21 +6,23 @@
 /   -@product.errors.full_messages.each do |msg|
 /     %p=msg
 
-=form_for :carts_product, url: "/carts/#{@cart.id}", method: :patch do |f|
-
-  %table{class: "table table-hover"}
-    %tr{}
-      %th Product
-      %th Price
-      %th Quantity
-      %th Remove Item
-    - @cart_products.each do |prod|
-      %tr{class: "small-margin small-padding"}
-        %td= prod.title
-        %td= prod.price
-        %td= f.number_field :quantity, :value => CartsProduct.find_by(cart_id: @cart.id, product_id: prod.id).quantity
-        %td "Delete Button"
-  %p= f.submit
+%table{class: "table table-hover"}
+  %tr{}
+    %th Product
+    %th Price
+    %th Quantity
+    %th Edit Quantity
+    %th Remove Item
+  - @cart_products.each do |prod|
+    %tr{class: "small-margin small-padding"}
+      %td= prod.title
+      %td= prod.price
+      =form_for :carts_product, url: "/carts_products/#{CartsProduct.find_by(cart_id: @cart.id, product_id: prod.id).id}", method: :patch do |f|
+        %td
+          = f.number_field :quantity, :value => CartsProduct.find_by(cart_id: @cart.id, product_id: prod.id).quantity
+        %td
+          %p= f.submit "Edit Quantity"
+      %td "Delete Button"
 
 %p=link_to "Cancel Edit", '/admin/index'
 

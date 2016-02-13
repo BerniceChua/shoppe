@@ -16,7 +16,10 @@ class CartsController < ApplicationController
   end
 
   def update
-    CartsProduct.find_by(cart_id: @cart.id, product_id: prod.id).quantity
+    # @cart = Cart.find(params[:id])
+
+    # if @cart.update(cart_params)
+    # CartsProduct.find_by(cart_id: @cart.id, product_id: prod.id).quantity
 
   end
 
