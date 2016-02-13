@@ -11,7 +11,7 @@
     %tr{class: "small-margin small-padding"}
       %td= prod.title
       %td= prod.price
-      %td= "quantity"
+      %td= CartsProduct.find_by(cart_id: @cart.id, product_id: prod.id).quantity
       %td "Edit Button"
       %td "Delete Button"
 

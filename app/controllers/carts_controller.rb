@@ -3,20 +3,21 @@ class CartsController < ApplicationController
     @user = current_user
     @cart = Cart.find_by(user_id: @user.id)
     @cart_products = @cart.products
+    # CartsProduct.find_by(cart_id: @cart.id, product_id: )
   end
 
    def edit
-    # @product = Product.find(params[:id])
-
-    # if is_admin?
-    #   render_to
-    # end
+    @cart = Cart.find(params[:id])
+    @cart_products = @cart.products
+    # @quantity = CartsProduct.find_by(cart_id: @cart.id, product_id: prod.id).quantity
   end
 
   def create
   end
 
   def update
+    CartsProduct.find_by(cart_id: @cart.id, product_id: prod.id).quantity
+
   end
 
   private
