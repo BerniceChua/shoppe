@@ -7,11 +7,11 @@
     %th Quantity
     %th Edit Quantity
     %th Remove Item
-  - @cart.products.each do |prod|
+  - @cart_products.each do |prod|
     %tr{class: "small-margin small-padding"}
       %td= prod.title
       %td= prod.price
-      %td "quantity"
+      %td= "quantity"
       %td "Edit Button"
       %td "Delete Button"
 
