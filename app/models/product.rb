@@ -19,6 +19,14 @@ class Product < ActiveRecord::Base
   # 	end
   # end
 
+  def find_cart(cart)
+    CartsProduct.find_by(cart_id: cart.id, product_id: self.id)
+  end
+
+  def calculate_quantity(cart)
+    find_cart(cart).quantity
+  end
+
   def categories_list
     array_of_categories = []
     self.categories.each do |category|

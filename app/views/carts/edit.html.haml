@@ -1,0 +1,29 @@
+%h1 Edit Your Cart
+
+/ -if @errors
+/   = pluralize(@errors.count, "error")
+/   prohibited this product from being saved:
+/   -@product.errors.full_messages.each do |msg|
+/     %p=msg
+
+%table{class: "table table-hover"}
+  %tr{}
+    %th Product
+    %th Price
+    %th Quantity
+    %th Edit Quantity
+    %th Remove Item
+  - @cart_products.each do |prod|
+    %tr{class: "small-margin small-padding"}
+      %td= prod.title
+      %td= prod.price
+      =form_for :carts_product, url: "/carts_products/#{prod.find_cart(@cart).id}", method: :patch do |f|
+        %td
+          = f.number_field :quantity, :value => prod.calculate_quantity(@cart)
+        %td
+          %p= f.submit "Edit Quantity"
+      %td "Delete Button"
+
+%p=link_to "Cancel Edit", '/admin/index'
+
+/ %p=link_to "Delete this Product", product_path(@product), method: :delete, data: { confirm: "Confirm Delete?" }

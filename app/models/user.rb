@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 	validates :username, :email, :password_hash, :permissions, presence: true
 	validates :email, :username, uniqueness: true
 	validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+	has_many :carts
 
 	include BCrypt
 

@@ -8,6 +8,10 @@
 
 User.create(username:'admin', password:'admin123',email:'admin@site.com',permissions:'admin')
 
+4.times do |count|
+	User.create(username:Faker::Name.first_name, password:'123',email:"#{count}@site.com")
+end
+
 # 5.times do |count|
 #   Category.create(name: Faker::Commerce.department)
 # end
@@ -34,3 +38,18 @@ Category.all.each do |count|
     Category.find(count.id).products << fake_product
   end
 end
+
+@users = User.all
+@users.each do |user|
+	Cart.create(user_id: user.id)
+end
+
+
+5.times do
+Cart.all.each do |cart|
+	cart.products << Product.all[rand(0..49)]
+	end
+end
+
+
+

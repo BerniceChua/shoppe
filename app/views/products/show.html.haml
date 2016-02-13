@@ -13,6 +13,8 @@
   %ul
     -@product.categories.each do |category|
       %li= category.name
+%form{action: "/carts_products", method:"post"}
+  %input{:type => "submit", :value => "add to cart"}
 
 -if is_admin?
   =link_to "Edit or Delete", edit_product_path(@product)

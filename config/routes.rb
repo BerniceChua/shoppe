@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'products/index'
 
-  resources :users, :products, :categories
+  resources :users, :products, :categories, :carts, :carts_product
 
   root "categories#index"
 
@@ -23,4 +23,7 @@ Rails.application.routes.draw do
 
   get 'sessions/logout', to: 'sessions#destroy'
 
+  patch 'carts_products/:id', to: 'carts_products#update'
+
+  post 'carts_products', to: 'carts_products#create'
 end

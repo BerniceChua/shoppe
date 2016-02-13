@@ -1,0 +1,23 @@
+= @user.username
+
+%table{class: "table table-hover"}
+  %tr{}
+    %th Product
+    %th Price
+    %th Quantity
+    %th Total Cost
+  - @cart_products.each do |prod|
+    %tr{class: "small-margin small-padding"}
+      %td= prod.title
+      %td= prod.price
+      %td= prod.calculate_quantity(@cart)
+      %td= prod.price * prod.calculate_quantity(@cart)
+
+%h1= @cart.calculate_total_price
+
+%form{action: "/carts/#{@cart.id}/edit", method:"get"}
+  %input{:type => "submit", :value => "Edit Cart", class: "btn"}
+
+
+%input{:type => "submit", :value => "Purchase", class: "btn"}
+%div#price-div total price:
