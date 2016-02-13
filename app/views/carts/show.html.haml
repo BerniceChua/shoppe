@@ -5,15 +5,19 @@
     %th Product
     %th Price
     %th Quantity
-    %th Edit Quantity
-    %th Remove Item
+    %th Total Cost
   - @cart_products.each do |prod|
     %tr{class: "small-margin small-padding"}
       %td= prod.title
       %td= prod.price
-      %td= CartsProduct.find_by(cart_id: @cart.id, product_id: prod.id).quantity
-      %td "Edit Button"
-      %td "Delete Button"
+      %td= prod.calculate_quantity(@cart)
+      %td= prod.price * prod.calculate_quantity(@cart)
+
+%h1= @cart.calculate_total_price
+
+%form{action: "/carts/#{@cart.id}/edit", method:"get"}
+  %input{:type => "submit", :value => "Edit Cart", class: "btn"}
+
 
 %input{:type => "submit", :value => "Purchase", class: "btn"}
 %div#price-div total price:

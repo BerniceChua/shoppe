@@ -23,4 +23,9 @@ class CartsProductsController < ApplicationController
 
 		redirect_to Cart.find(@cart_product.cart_id)
 	end
+
+	def create
+		# puts "THESE ARE THE PARAMS"
+		# puts params
+	end
 end

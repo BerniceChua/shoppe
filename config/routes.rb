@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   get 'sessions/logout', to: 'sessions#destroy'
 
   patch 'carts_products/:id', to: 'carts_products#update'
+
+  post 'carts_products', to: 'carts_products#create'
 end

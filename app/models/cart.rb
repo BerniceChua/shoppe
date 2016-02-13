@@ -5,7 +5,11 @@ class Cart < ActiveRecord::Base
 	validates :total_price, numericality: {greater_than_or_equal_to: 0}
 
 	def calculate_total_price
-
+		total = 0
+		self.products.each do |prod|
+			total += prod.calculate_quantity(self) * prod.price
+		end
+		return total
 	end
 
 	def item_in_stock?

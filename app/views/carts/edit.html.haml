@@ -17,9 +17,9 @@
     %tr{class: "small-margin small-padding"}
       %td= prod.title
       %td= prod.price
-      =form_for :carts_product, url: "/carts_products/#{CartsProduct.find_by(cart_id: @cart.id, product_id: prod.id).id}", method: :patch do |f|
+      =form_for :carts_product, url: "/carts_products/#{prod.find_cart(@cart).id}", method: :patch do |f|
         %td
-          = f.number_field :quantity, :value => CartsProduct.find_by(cart_id: @cart.id, product_id: prod.id).quantity
+          = f.number_field :quantity, :value => prod.calculate_quantity(@cart)
         %td
           %p= f.submit "Edit Quantity"
       %td "Delete Button"
