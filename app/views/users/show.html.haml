@@ -5,4 +5,5 @@
 -@user.carts.each do |cart|
 	-cart.products.each do |product|
 		%li="Name: #{product.title}"
-		%li="Price: #{product.price}"
+		%li= "Quantity Ordered:#{product.find_cart(cart).quantity}"
+		%li="Total Cost: #{product.find_cart(cart).quantity * product.price}"

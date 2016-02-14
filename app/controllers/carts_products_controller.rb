@@ -30,6 +30,6 @@ class CartsProductsController < ApplicationController
 		end
 		@cart.update_attributes(active?: false, total_price: @cart.calculate_total_price)
 		Cart.create(user_id: @cart.user.id)
-		redirect_to "/"
+		redirect_to "/users/#{@cart.user.id}"
 	end
 end
