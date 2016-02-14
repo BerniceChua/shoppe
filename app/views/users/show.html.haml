@@ -1,2 +1,8 @@
 %h1
 	=@user.username
+
+
+-@user.carts.each do |cart|
+	-cart.products.each do |product|
+		%li="Name: #{product.title}"
+		%li="Price: #{product.price}"

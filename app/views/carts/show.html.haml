@@ -18,6 +18,6 @@
 %form{action: "/carts/#{@cart.id}/edit", method:"get"}
   %input{:type => "submit", :value => "Edit Cart", class: "btn"}
 
-
-%input{:type => "submit", :value => "Purchase", class: "btn"}
+%form{action: "/carts/#{@cart.id}/checkout", method:"post"}
+  %input{:type => "submit", :value => "Purchase", class: "btn"}
 %div#price-div total price:

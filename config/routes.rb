@@ -26,4 +26,8 @@ Rails.application.routes.draw do
   patch 'carts_products/:id', to: 'carts_products#update'
 
   post 'carts_products', to: 'carts_products#create'
+
+  post 'carts/:id/checkout', to: 'carts_products#checkout'
+
+  # get 'carts_products', to: 'carts_products#create'
 end
