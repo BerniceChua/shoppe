@@ -13,8 +13,10 @@ include UsersHelper
 		@user = User.new(user_params)
 		if @user.save
 			login(@user)
-			flash[:success] = "#{@user.username} saved! ^_^"
+			# flash[:success] = "#{@user.username} saved! ^_^"
+			Cart.create(user_id: @user.id)
 			redirect_to "/users/#{@user.id}"
+
 		else
 			@errors = @user.errors
 			render 'new'
@@ -43,7 +45,6 @@ include UsersHelper
 	def destroy
 		@user = User.find(params[:id])
 		@user.destroy
-
 		redirect_to users_path
 	end
 

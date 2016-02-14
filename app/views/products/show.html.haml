@@ -4,17 +4,26 @@
   %div{class: "alert alert-#{message_type}"}= message
 
 %img{'src'=> "#{@product.picture}"}
-
-%ul
-  %li="Price: $#{@product.price}"
-  %li="Description: #{@product.description}"
-  %li="Inventory: #{@product.inventory}"
-  %li="Categories:"
-  %ul
-    -@product.categories.each do |category|
-      %li= category.name
 %form{action: "/carts_products", method:"post"}
-  %input{:type => "submit", :value => "add to cart"}
+
+  %ul
+    %li="Price: $#{@product.price}"
+    %li="Description: #{@product.description}"
+    %li="Inventory: #{@product.inventory}"
+    %li="Categories:"
+    %ul
+      -@product.categories.each do |category|
+        %li= category.name
+
+  - if logged_in?
+    -if product_in_stock?(@product)
+      %input{:type => "hidden", name: "product_id", :value => @product.id}
+      %input{:type => "hidden", name: "user_id", :value => current_user.id}
+      %input{:type => "submit", :value => "add to cart"}
+    -else
+      %h2 item currently out of stock
+  - else
+    %h2 Log in to purchase!
 
 -if is_admin?
   =link_to "Edit or Delete", edit_product_path(@product)
