@@ -23,6 +23,10 @@ class Product < ActiveRecord::Base
     CartsProduct.find_by(cart_id: cart.id, product_id: self.id)
   end
 
+  def reduce_inventory_after_checkout(quantity)
+    self.update_attributes(inventory: self.inventory -= quantity)
+  end
+
   def calculate_quantity(cart)
     find_cart(cart).quantity
   end

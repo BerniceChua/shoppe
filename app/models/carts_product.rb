@@ -16,4 +16,8 @@ class CartsProduct < ActiveRecord::Base
 		self.quantity*product
 	end
 
+	def checkout_cart
+		# self.active? = false
+	end
+
 end

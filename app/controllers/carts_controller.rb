@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
   def show
     @user = current_user
-    @cart = Cart.find_by(user_id: @user.id)
+    @cart = Cart.find_by(user_id: @user.id, active?: true)
     @cart_products = @cart.products
     # CartsProduct.find_by(cart_id: @cart.id, product_id: )
   end
