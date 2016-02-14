@@ -10,6 +10,9 @@ gem 'bcrypt'
 gem 'faker'
 
 group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'nyan-cat-formatter'
   gem 'byebug'
   gem 'rspec-rails'
   gem 'faker'
