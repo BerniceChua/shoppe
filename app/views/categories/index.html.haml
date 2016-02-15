@@ -2,6 +2,8 @@
 
 %div{class: "text-center"}
   - @categories.each do |category|
-    %div{class: "debugging float-left small-margin small-padding product-display-box"}
-      =image_tag "#{category.products.first.picture}"
-      %p=link_to category.name, category_path(category)
+    %div{class: "float-left small-margin small-padding product-display-box"}
+      =image_tag "#{category.products.first.picture}", {class: "small-index-horse img-responsive"}
+      =link_to category.name, category_path(category)
+
+
