@@ -7,7 +7,7 @@ class CartsProductsController < ApplicationController
 		@cart_product = CartsProduct.find(params[:id])
 
 		if @cart_product.update_attributes(quantity: params[:carts_product][:quantity].to_i)
-			redirect_to Cart.find(@cart_product.cart_id)
+			redirect_to "/carts/#{@cart_product.cart_id}/edit"
 		#else
 			#
 		end
@@ -21,15 +21,16 @@ class CartsProductsController < ApplicationController
 
 	def checkout
 		@cart = Cart.find(params[:id])
-		# params.require(:carts_product).permit(:quantity, :id, :cart_id, :product_id)
-		# @cart_product = CartsProduct.find()
-
-		@cart.products.each do |product|
-			quantity_purachased = CartsProduct.find_by({product_id: product.id, cart_id: @cart.id}).quantity
-			product.reduce_inventory_after_checkout(quantity_purachased)
+		if @cart.cart_not_empty
+			@cart.products.each do |product|
+				quantity_purachased = CartsProduct.find_by({product_id: product.id, cart_id: @cart.id}).quantity
+				product.reduce_inventory_after_checkout(quantity_purachased)
+			end
+			@cart.update_attributes(active?: false, total_price: @cart.calculate_total_price)
+			Cart.create(user_id: @cart.user.id)
+		else
+			#display error here
 		end
-		@cart.update_attributes(active?: false, total_price: @cart.calculate_total_price)
-		Cart.create(user_id: @cart.user.id)
 		redirect_to "/users/#{@cart.user.id}"
 	end
 end

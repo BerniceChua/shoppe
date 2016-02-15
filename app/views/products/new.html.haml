@@ -12,7 +12,7 @@
   %p= f.text_field :title
 
   %p= f.label :price
-  %p= f.number_field :price
+  %p= f.number_field :price, {step:".01"}
 
   %p= f.label :description
   %p= f.text_area :description
