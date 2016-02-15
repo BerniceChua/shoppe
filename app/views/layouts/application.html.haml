@@ -35,13 +35,14 @@
                   ='Login'
                 %a{href:"/users/new", class: "small-margin"}
                   ='Register'
-      %div{class: "float-right"}
-        %span{class: "small-margin"}
-          Welcome
-          %a{href:"/users/#{current_user.id}"}
-            =current_user.username
-        %a{href:"/carts/#{current_user.carts.last.id}", class: "small-margin"}
-          ='Go To Cart'
+      - if logged_in?
+        %div{class: "float-right"}
+          %span{class: "small-margin"}
+            Welcome
+            %a{href:"/users/#{current_user.id}"}
+              =current_user.username
+          %a{href:"/carts/#{current_user.carts.last.id}", class: "small-margin"}
+            ='Go To Cart'
 
     %section{class: "container-fluid"}
       = yield
