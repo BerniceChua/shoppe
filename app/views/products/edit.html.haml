@@ -12,7 +12,7 @@
     %p= f.text_field :title, {class: "form-control"}
 
     %p= f.label :price
-    %p= f.number_field :price, {step: ".01"}, {class: "form-control"}
+    %p= f.number_field :price, {step: ".01"}
 
     %p= f.label :description
     %p= f.text_area :description, {class: "form-control"}
@@ -36,4 +36,6 @@
 
   %p=link_to "Cancel Edit", '/admin/index'
 
-  %p=link_to "Delete this Product", product_path(@product), method: :delete, data: { confirm: "Confirm Delete?" }, {class: "btn-danger"}
+  =form_for :product, url: "/products/#{@product.id}", method: :delete do |f|
+    %td
+      %p= f.submit "Delete Item"

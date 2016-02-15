@@ -32,4 +32,6 @@ Rails.application.routes.draw do
 
   delete 'carts_products/:id', to: 'carts_products#destroy'
 
+  delete '/', to: 'carts_products#destroy'
+
 end
