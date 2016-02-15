@@ -5,29 +5,35 @@
   prohibited this product from being saved:
   -@product.errors.full_messages.each do |msg|
     %p=msg
+%div{class: "centered seventy-percent-width"}
+  =form_for :product, url:product_path(@product), method: :patch do |f|
 
-=form_for :product, url:product_path(@product), method: :patch do |f|
+    %p= f.label :title
+    %p= f.text_field :title, {class: "form-control"}
 
-  %p= f.label :title
-  %p= f.text_field :title
+    %p= f.label :price
+    %p= f.number_field :price, {step: ".01"}, {class: "form-control"}
 
-  %p= f.label :price
-  %p= f.number_field :price, {step: ".01"}
+    %p= f.label :description
+    %p= f.text_area :description, {class: "form-control"}
 
-  %p= f.label :description
-  %p= f.text_area :description
+    %p= f.label :inventory
+    %p= f.number_field :inventory, {class: "form-control"}
 
-  %p= f.label :inventory
-  %p= f.number_field :inventory
+    %p= f.label :'image url'
+    %p= f.url_field :picture, {class: "form-control"}
 
-  %p= f.label :'image url'
-  %p= f.url_field :picture
+    %p= f.label :'Categories'
+    = f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |each_box|
+      .row
+        = each_box.label(class:"checkbox_container") do
+          .col-xs-1
+            = each_box.check_box
+          .col-xs-4
+            = each_box.text
 
-  %p= f.label :'Categories'
-  %p= f.collection_check_boxes(:category_ids, Category.all, :id, :name)
+    %p{class: "btn-default"}= f.submit
 
-  %p= f.submit
+  %p=link_to "Cancel Edit", '/admin/index'
 
-%p=link_to "Cancel Edit", '/admin/index'
-
-%p=link_to "Delete this Product", product_path(@product), method: :delete, data: { confirm: "Confirm Delete?" }
+  %p=link_to "Delete this Product", product_path(@product), method: :delete, data: { confirm: "Confirm Delete?" }, {class: "btn-danger"}
