@@ -13,7 +13,7 @@
       %td= prod.calculate_quantity(@cart)
       %td= "$#{prod.price * prod.calculate_quantity(@cart)}"
 
-%h1= @cart.calculate_total_price
+%h1= "Total Price: $#{@cart.calculate_total_price}"
 
 %form{action: "/carts/#{@cart.id}/edit", method:"get"}
   %input{:type => "submit", :value => "Edit Cart", class: "btn"}
