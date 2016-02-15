@@ -1,15 +1,16 @@
-= form_for :user do |f|
-  %p
-    = f.label :username
-    %br/
-    = f.text_field :username
-  %p
-    = f.label :email
-    %br/
-    = f.email_field :email
-  %p
-    = f.label :password
-    %br/
-    = f.password_field :password
-  %p
-    = f.submit "Register"
+%div{class: "centered seventy-percent-width"}
+  = form_for :user do |f|
+    %p
+      = f.label :username
+      %br/
+      = f.text_field :username, {class: "form-control"}
+    %p
+      = f.label :email
+      %br/
+      = f.email_field :email, {class: "form-control"}
+    %p
+      = f.label :password
+      %br/
+      = f.password_field :password, {class: "form-control"}
+    %p
+      = f.submit "Register", {class: "btn btn-primary"}

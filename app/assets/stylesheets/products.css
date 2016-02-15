@@ -32,6 +32,17 @@
   font-weight: bolder;
 }
 
-.checkbox_container input {
+.checkbox_container {
   display: block;
+  margin-bottom: 2em;
 }
+
+.seventy-percent-width { width: 70%; }
+
+.centered {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.white-words { color: white; }

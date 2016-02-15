@@ -12,30 +12,36 @@
     %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css", :integrity => "sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r", :rel => "stylesheet"}/
     %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", :name => "viewport"}/
   %body
-    %header{class: "container"}
-      %h1{class: "text-center header-font"} BeNice Horse Cloners
-      %a{href:"/"} Homepage
-      .dropdown
-        %button.dropbtn Categories
-        .dropdown-content
-          -@categories.each do |category|
-            %a{:href => "/categories/#{category.id}"}
-              ="#{category.name}"
-      - if logged_in?
-        -if is_admin?
-          =link_to("Admin Page", { controller: "admin", action: "index" })
-        %a{href:"/sessions/logout"}
-          ='logout'
-        %p
+    %header{class: "container-fluid"}
+      %h1{class: "text-center header-font"}
+        %a{href:"/"} BeNice Horse Cloners
+      %nav{class: "navbar navbar-inverse white-words"}
+        %div{class: "container-fluid"}
+          %div{class: "navbar-header"}
+            %section{class: "nav navbar-nav"}
+              .dropdown
+                %button.dropbtn Categories
+                .dropdown-content
+                  -@categories.each do |category|
+                    %a{:href => "/categories/#{category.id}"}
+                      ="#{category.name}"
+              - if logged_in?
+                -if is_admin?
+                  =link_to("Admin Page", { controller: "admin", action: "index" }, {class: "small-margin"})
+                %a{href:"/sessions/logout", class: "small-margin"}
+                  ='Logout'
+              - else
+                %a{href:"/sessions/new", class: "small-margin"}
+                  ='Login'
+                %a{href:"/users/new", class: "small-margin"}
+                  ='Register'
+      %div{class: "float-right"}
+        %span{class: "small-margin"}
           Welcome
           %a{href:"/users/#{current_user.id}"}
             =current_user.username
-        %a{href:"/carts/#{current_user.carts.last.id}"}
+        %a{href:"/carts/#{current_user.carts.last.id}", class: "small-margin"}
           ='Go To Cart'
-      - else
-        %a{href:"/sessions/new"}
-          ='login'
-        %a{href:"/users/new"}
-          ='register'
+
     %section{class: "container-fluid"}
       = yield

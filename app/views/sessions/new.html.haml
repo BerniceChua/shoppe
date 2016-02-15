@@ -1,11 +1,12 @@
-= form_for :login do |f|
-  %p
-    = f.label :username
-    %br/
-    = f.text_field :username
-  %p
-    = f.label :password
-    %br/
-    = f.password_field :password
-  %p
-    = f.submit "Login"
+%div{class: "centered seventy-percent-width"}
+  = form_for :login do |f|
+    %p
+      = f.label :username, {class: "text-center"}
+      %br/
+      = f.text_field :username, {class: "form-control"}
+    %p
+      = f.label :password
+      %br/
+      = f.password_field :password, {class: "form-control"}
+    %p
+      = f.submit "Login", {class: "btn btn-primary"}
