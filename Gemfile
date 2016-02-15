@@ -9,6 +9,10 @@ gem 'haml-rails'
 gem 'bcrypt'
 gem 'faker'
 
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'nyan-cat-formatter'
+
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
