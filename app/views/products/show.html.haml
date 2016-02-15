@@ -4,7 +4,7 @@
   %div{class: "alert alert-#{message_type}"}= message
 
 %img{'src'=> "#{@product.picture}"}
-%form{action: "/carts_products", method:"post"}
+%form{action: "/carts_products", method:"post", id:"add-to-cart-submit"}
 
   %ul
     %li="Price: $#{@product.price}"
@@ -27,3 +27,5 @@
 
 -if is_admin?
   =link_to "Edit or Delete", edit_product_path(@product)
+
+%div{id: "placeholder"}

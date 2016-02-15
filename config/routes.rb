@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'products/index'
 
   resources :users, :products, :categories, :carts, :carts_product
@@ -29,5 +30,6 @@ Rails.application.routes.draw do
 
   post 'carts/:id/checkout', to: 'carts_products#checkout'
 
-  # get 'carts_products', to: 'carts_products#create'
+  delete 'carts_products/:id', to: 'carts_products#destroy'
+
 end

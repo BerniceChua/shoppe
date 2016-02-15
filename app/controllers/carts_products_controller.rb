@@ -8,15 +8,20 @@ class CartsProductsController < ApplicationController
 
 		if @cart_product.update_attributes(quantity: params[:carts_product][:quantity].to_i)
 			redirect_to "/carts/#{@cart_product.cart_id}/edit"
-		#else
-			#
+		else
+			#errors
 		end
 	end
 
 	def create
 		@cart = Cart.find_by({user_id: params[:user_id], active?: true})
 		cart_product = CartsProduct.create({product_id: params[:product_id], cart_id: @cart.id})
-		redirect_to @cart
+
+		if request.xhr?
+		else
+			redirect_to @cart
+		end
+
 	end
 
 	def checkout
@@ -33,4 +38,12 @@ class CartsProductsController < ApplicationController
 		end
 		redirect_to "/users/#{@cart.user.id}"
 	end
+
+	def destroy
+		@cart_product = CartsProduct.find(params[:id])
+		cart_product_id = @cart_product.cart_id
+		@cart_product.destroy!
+		redirect_to "/carts/#{cart_product_id}/edit"
+	end
+
 end
