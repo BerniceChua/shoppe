@@ -50,12 +50,12 @@ ActiveRecord::Schema.define(version: 20160212235643) do
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
-    t.integer  "price"
+    t.decimal  "price",       precision: 10, scale: 2, default: 0.0
     t.string   "description"
-    t.integer  "inventory",   default: 1
+    t.integer  "inventory",                            default: 1
     t.string   "picture"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -9,9 +9,9 @@
   - @cart_products.each do |prod|
     %tr{class: "small-margin small-padding"}
       %td= prod.title
-      %td= prod.price
+      %td= "$#{prod.price}"
       %td= prod.calculate_quantity(@cart)
-      %td= prod.price * prod.calculate_quantity(@cart)
+      %td= "$#{prod.price * prod.calculate_quantity(@cart)}"
 
 %h1= @cart.calculate_total_price
 

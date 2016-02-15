@@ -24,6 +24,6 @@
           %p= f.submit "Edit Quantity"
       %td "Delete Button"
 
-%p=link_to "Cancel Edit", '/admin/index'
+%p=link_to "Return to Checkout Page", "/carts/#{@cart.id}"
 
 / %p=link_to "Delete this Product", product_path(@product), method: :delete, data: { confirm: "Confirm Delete?" }
