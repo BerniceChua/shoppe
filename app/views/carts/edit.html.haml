@@ -1,11 +1,5 @@
 %h1 Edit Your Cart
 
-/ -if @errors
-/   = pluralize(@errors.count, "error")
-/   prohibited this product from being saved:
-/   -@product.errors.full_messages.each do |msg|
-/     %p=msg
-
 %table{class: "table table-hover"}
   %tr{}
     %th Product

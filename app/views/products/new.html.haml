@@ -24,8 +24,13 @@
   %p= f.url_field :picture
 
   %p= f.label :'Categories'
-  %p= f.collection_check_boxes(:category_ids, Category.all, :id, :name)
-
+  = f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |each_box|
+    .row
+      = each_box.label(class:"checkbox_container") do
+        .col-xs-1
+          = each_box.check_box
+        .col-xs-4
+          = each_box.text
 
   %p= f.submit
 

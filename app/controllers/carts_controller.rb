@@ -6,24 +6,17 @@ class CartsController < ApplicationController
     if request.xhr?
       render layout: false
     end
-    # CartsProduct.find_by(cart_id: @cart.id, product_id: )
   end
 
    def edit
     @cart = Cart.find(params[:id])
     @cart_products = @cart.products
-    # @quantity = CartsProduct.find_by(cart_id: @cart.id, product_id: prod.id).quantity
-  end
+   end
 
   def create
   end
 
   def update
-    # @cart = Cart.find(params[:id])
-
-    # if @cart.update(cart_params)
-    # CartsProduct.find_by(cart_id: @cart.id, product_id: prod.id).quantity
-
   end
 
   private

@@ -15,10 +15,6 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-
-    # if is_admin?
-    #   render_to
-    # end
   end
 
   def create
