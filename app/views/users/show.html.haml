@@ -14,7 +14,7 @@
 
 			-cart.products.each do |product|
 				%tr
-				%td= product.title
+				%td= link_to(product.title,"/products/#{product.id}")
 				%td= product.calculate_quantity(cart)
 				%td= "$#{product.calculate_quantity(cart)*product.price.to_d}"
 			%tr

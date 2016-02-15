@@ -9,7 +9,7 @@ class CartsProductsController < ApplicationController
 		if @cart_product.update_attributes(quantity: params[:carts_product][:quantity].to_i)
 			redirect_to "/carts/#{@cart_product.cart_id}/edit"
 		else
-			#errors
+			redirect_to "/carts/#{@cart_product.cart_id}/edit"
 		end
 	end
 
@@ -33,6 +33,7 @@ class CartsProductsController < ApplicationController
 			end
 			@cart.update_attributes(active?: false, total_price: @cart.calculate_total_price)
 			Cart.create(user_id: @cart.user.id)
+			flash[:success] = "Thanks for Ordering!"
 		else
 			#display error here
 		end
