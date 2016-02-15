@@ -7,7 +7,7 @@ class CartsProductsController < ApplicationController
 		@cart_product = CartsProduct.find(params[:id])
 
 		if @cart_product.update_attributes(quantity: params[:carts_product][:quantity].to_i)
-			redirect_to Cart.find(@cart_product.cart_id)
+			redirect_to "/carts/#{@cart_product.cart_id}/edit"
 		#else
 			#
 		end

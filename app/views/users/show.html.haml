@@ -5,22 +5,22 @@
 -@user_carts.each do |cart|
 	-if cart.active? == false
 		%table{class: "table table-hover"}
-			%h1="Order Number: #{cart.id}"
+			%h3="Order Number: #{cart.id}"
 			%h4= "submitted (#{cart.updated_at.strftime('%m/%d/%Y')})"
 			%tr
 				%th Item Name
 				%th Quantity Ordered
 				%th Product Price
 
-			-cart.products.each do |each_product|
+			-cart.products.each do |product|
 				%tr
-				%td= each_product.title
-				%td= each_product.calculate_quantity(cart)
-				%td= each_product.calculate_quantity(cart)*each_product.price
+				%td= product.title
+				%td= product.calculate_quantity(cart)
+				%td= "$#{product.calculate_quantity(cart)*product.price.to_d}"
 			%tr
 			%td
-				%h4 Total Order Price:
+				%h4= "Total Order Price: $#{cart.calculate_total_price.to_d}"
 			%td
-			%td=cart.calculate_total_price
+			%td
 
 
