@@ -22,8 +22,8 @@
           = f.number_field :quantity, :value => prod.calculate_quantity(@cart)
         %td
           %p= f.submit "Edit Quantity"
-      %td "Delete Button"
+      =form_for :carts_product, url: "/carts_products/#{prod.find_cart(@cart).id}", method: :delete do |f|
+        %td
+          %p= f.submit "Remove Item"
 
 %p=link_to "Return to Checkout Page", "/carts/#{@cart.id}"
-
-/ %p=link_to "Delete this Product", product_path(@product), method: :delete, data: { confirm: "Confirm Delete?" }

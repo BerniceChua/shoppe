@@ -3,6 +3,9 @@ class CartsController < ApplicationController
     @user = current_user
     @cart = Cart.find_by(user_id: @user.id, active?: true)
     @cart_products = @cart.products
+    if request.xhr?
+      render layout: false
+    end
     # CartsProduct.find_by(cart_id: @cart.id, product_id: )
   end
 

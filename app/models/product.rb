@@ -31,6 +31,8 @@ class Product < ActiveRecord::Base
     find_cart(cart).quantity
   end
 
+
+
   def categories_list
     array_of_categories = []
     self.categories.each do |category|
