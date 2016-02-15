@@ -32,10 +32,13 @@ Category.create(name: "Curly Horses")
 Category.create(name: "Lipizzan Horses")
 Category.create(name: "Marwari Horses")
 
-Category.all.each do |count|
-  5.times do
-    fake_product = Product.create(title: Faker::Name.first_name, price: rand(1..10), description: "Our #{count.name}!", picture: "/link/to/the_picture_#{count}.png")
-    Category.find(count.id).products << fake_product
+categories = Category.all
+
+categories.each do |each_category|
+  picture = each_category.id
+  5.times do |count|
+    fake_product = Product.create(title: Faker::Name.first_name, price: rand(1..10), description: "Our #{each_category.name}!", picture: "#{picture}.jpg")
+    Category.find(each_category.id).products << fake_product
   end
 end
 

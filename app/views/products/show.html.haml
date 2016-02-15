@@ -3,7 +3,8 @@
 - flash.each do |message_type, message|
   %div{class: "alert alert-#{message_type}"}= message
 
-%img{'src'=> "#{@product.picture}"}
+%img{'src'=> "/assets/#{@product.picture}"}
+
 %form{action: "/carts_products", method:"post", id:"add-to-cart-submit"}
 
   %ul
